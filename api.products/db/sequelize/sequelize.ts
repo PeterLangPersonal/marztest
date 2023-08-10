@@ -9,5 +9,8 @@ const MYSQL_PORT = process.env.MYSQL_PORT;
 export const sequelize = new Sequelize('marz', MYSQL_USER as string, MYSQL_PASSWORD, {
     host: MYSQL_HOST,
     port: Number(MYSQL_PORT),
-    dialect: 'mariadb'
+    dialect: 'mariadb',
+    define: {
+        freezeTableName: true,
+    },
 });
