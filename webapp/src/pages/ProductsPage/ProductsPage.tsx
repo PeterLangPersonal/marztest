@@ -18,8 +18,8 @@ interface IdList {
 }
 
 const ID_LIST_MAP: IdList = {
-  '0': 'Active',
-  '1': 'InActive'
+  '0': 'InActive',
+  '1': 'Active'
 };
 
 const ProductsPage = () => {
