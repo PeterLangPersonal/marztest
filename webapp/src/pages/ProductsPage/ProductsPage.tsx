@@ -18,7 +18,7 @@ interface IdList {
 
 const ID_LIST_MAP: IdList = {
   '0': 'Active',
-  '1': 'Inactive'
+  '1': 'InActive'
 };
 
 const ProductsPage = () => {
@@ -30,7 +30,7 @@ const ProductsPage = () => {
   */
  
   const [loadingState, setLoadingState] = useState(DATA_STATES.waiting);
-  const [data, setData] = useState({Active: [], Inactive: []} as ProductData);
+  const [data, setData] = useState({Active: [], InActive: []} as ProductData);
 
   const getProducts = async () => {
     setLoadingState(DATA_STATES.waiting);

@@ -22,7 +22,7 @@ export interface Product {
 
 export interface ProductData {
     Active: Product[],
-    Inactive: Product[],
+    InActive: Product[],
 }
 
 export interface DraggableItemProps extends Order{

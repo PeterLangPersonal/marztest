@@ -51,7 +51,7 @@ const GET_PRODUCT_URL = '/api/products';
 const getProductData = async () => {
   const productData: ProductData = {
     Active: [],
-    Inactive: [],
+    InActive: [],
   };
   let errorOccured = false;
   try {
