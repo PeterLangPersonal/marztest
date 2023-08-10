@@ -57,7 +57,7 @@ const getProductData = async () => {
   try {
     const response = await axios.get(GET_PRODUCT_URL);
     if (response?.status === 200) {
-      const { data } = response.data;
+      const data = response.data;
       data.forEach((product: Product) => {
         productData[product.ProductStatus as keyof ProductData].push(product);
       });
