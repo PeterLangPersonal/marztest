@@ -28,7 +28,6 @@ const DraggableProductList = (props: DraggableProductListProps) => (
                                 <DraggableProduct
                                     item={item}
                                     draggableProvided={provided}
-                                    removeItem={props.removeItem}
                                 />
                             )}
                         </Draggable>

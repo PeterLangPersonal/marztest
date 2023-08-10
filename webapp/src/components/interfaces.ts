@@ -39,14 +39,12 @@ export interface DraggableListProps {
 
 export interface DraggableProductProps{
     draggableProvided: DraggableProvided;
-    removeItem: (product: Product) => void;
     item: Product;
 }
 
 export interface DraggableProductListProps {
     ID: string;
     listTitle: string;
-    removeItem: (product: Product) => void;
     items: Product[];
 };
 

@@ -22,13 +22,3 @@ ProductRouter.post('/:id/status', async(req, res) => {
         res.status(404).send(`Product not found for id ${productId}`);
     }
 });
-
-ProductRouter.delete('/:id', async(req, res) => {
-    const productId = req.params.id;
-    const productInstance = await ProductData.findByPk(productId);
-    if (productInstance) {
-        await productInstance.destroy();
-    } else {
-        res.status(404).send(`Product not found for id ${productId}`);
-    }
-});

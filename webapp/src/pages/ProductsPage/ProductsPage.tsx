@@ -3,7 +3,7 @@ import PageWrapper from '../PageWrapper';
 import { Product, ProductData } from "../../components/interfaces";
 import Spinner from "../../components/Spinner/Spinner";
 import { DragDropContext } from "react-beautiful-dnd";
-import { deleteProduct, getProductData, updateProductStatus } from "../ApiHelper";
+import { getProductData, updateProductStatus } from "../ApiHelper";
 import DraggableProductList from "../../components/DraggableProductList/DraggableProductList";
 
 const DATA_STATES = {
@@ -45,21 +45,6 @@ const ProductsPage = () => {
     const newProductStatus = product.ProductStatus === 'Active' ? 'Inactive' : 'Active';
     const productStatusUpdated = await updateProductStatus(product, newProductStatus);
     if (productStatusUpdated) {
-      const columnKey = product.ProductStatus as keyof ProductData;
-      setData({
-        ...data,
-        [columnKey]: data[columnKey].filter(
-          (otherProduct: Product) => otherProduct.ProductID !== product.ProductID
-        ),
-      });
-    }
-    setLoadingState(DATA_STATES.loaded);
-  };
-
-  const removeProduct = async (product: Product) => {
-    setLoadingState(DATA_STATES.waiting);
-    const productDeleted = await deleteProduct(product);
-    if (productDeleted) {
       const columnKey = product.ProductStatus as keyof ProductData;
       setData({
         ...data,
@@ -124,13 +109,11 @@ const ProductsPage = () => {
           <DraggableProductList
             ID='0'
             listTitle='Inactive'
-            removeItem={(product: Product) => removeProduct(product)}
             items={data.InActive}
           />
           <DraggableProductList
             ID='1'
             listTitle='Active'
-            removeItem={(product: Product) => removeProduct(product)}
             items={data.Active}
           />
         </DragDropContext>
