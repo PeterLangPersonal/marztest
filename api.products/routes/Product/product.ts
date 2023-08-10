@@ -17,7 +17,7 @@ ProductRouter.post('/:id/status', async(req, res) => {
 
     if (productInstance) {
         await productInstance.update({ProductStatus: ProductStatus});
-        res.status(200).send();
+        res.status(200).send('Complete');
     } else {
         res.status(404).send(`Product not found for id ${productId}`);
     }

@@ -41,7 +41,6 @@ const ProductsPage = () => {
   };
 
   const updateProduct = async (product: Product) => {
-    setLoadingState(DATA_STATES.waiting);
     const errorOccured = await updateProductStatus(product, product.ProductStatus);
     setLoadingState(errorOccured ? DATA_STATES.error : DATA_STATES.loaded);
   };

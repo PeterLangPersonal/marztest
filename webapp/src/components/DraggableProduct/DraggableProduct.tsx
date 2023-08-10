@@ -11,7 +11,7 @@ const DraggableItem = (props: DraggableProductProps) => (
     >
         <span data-testid={`draggable-productID-${props.item.ProductID}`}>{ props.item.ProductID }</span>
         <span data-testid={`draggable-productName-${props.item.ProductID}`}>{ props.item.ProductName }</span>
-        <img src={props.item.ProductPhotoURL} alt={`${props.item.ProductName}`}/>
+        <img className='w-16 h-16' src={props.item.ProductPhotoURL} alt={`${props.item.ProductName}`}/>
     </div>
 );
 
