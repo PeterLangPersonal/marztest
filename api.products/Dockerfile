@@ -1,6 +1,6 @@
 FROM node:16
 
-WORKDIR /api.orders
+WORKDIR /api.products
 
 RUN apt-get update
 
@@ -10,4 +10,4 @@ RUN npm ci
 EXPOSE 5002
 
 COPY . .
-CMD ["node", "index.ts"]
+CMD ["npm", "start"]

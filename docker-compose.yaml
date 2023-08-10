@@ -15,6 +15,7 @@ services:
     depends_on:
         - webapp
         - api.orders
+        - api.products
 
   webapp:
     image: webapp:latest
@@ -23,6 +24,7 @@ services:
       - 3000:3000
     depends_on:
       - api.orders
+      - api.products
       - mariadb
     build:
       context: ./webapp
