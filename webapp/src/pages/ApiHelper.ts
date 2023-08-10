@@ -95,7 +95,7 @@ const DELETE_PRODUCT_URL = '/api/products';
 const deleteProduct = async (product: Product) => {
   let productStatusDeleted = false;
   try {
-    const response = await axios.delete(`${UPDATE_STATUS_URL}/${product.ProductID}`);
+    const response = await axios.delete(`${DELETE_PRODUCT_URL}/${product.ProductID}`);
     if (response?.status === 200) productStatusDeleted = true;
     else {
       const { message } = response.data;

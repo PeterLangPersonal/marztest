@@ -23,7 +23,7 @@ ProductRouter.post('/:id/status', async(req, res) => {
     }
 });
 
-ProductRouter.delete('/:id/status', async(req, res) => {
+ProductRouter.delete('/:id', async(req, res) => {
     const productId = req.params.id;
     const productInstance = await ProductData.findByPk(productId);
     if (productInstance) {
