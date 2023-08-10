@@ -4,6 +4,7 @@ import { Product, ProductData } from "../../components/interfaces";
 import Spinner from "../../components/Spinner/Spinner";
 import { DragDropContext } from "react-beautiful-dnd";
 import { getProductData, updateProductStatus } from "../ApiHelper";
+import DraggableProductList from "../../components/DraggableProductList/DraggableProductList";
 
 const DATA_STATES = {
   waiting: 'WAITING',
@@ -105,6 +106,18 @@ const ProductsPage = () => {
         data-testid="pipeline-container"
       >
         <DragDropContext onDragEnd={handleDragEnd}>
+          <DraggableProductList
+            ID='0'
+            listTitle='Inactive'
+            removeItem={(product: Product) => updateProduct(product)}
+            items={data.InActive}
+          />
+          <DraggableProductList
+            ID='1'
+            listTitle='Active'
+            removeItem={(product: Product) => updateProduct(product)}
+            items={data.Active}
+          />
         </DragDropContext>
       </div>
     );
