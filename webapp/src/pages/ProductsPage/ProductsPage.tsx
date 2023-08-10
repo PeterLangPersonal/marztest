@@ -10,6 +10,16 @@ const DATA_STATES = {
   error: 'ERROR',
 }
 
+interface IdList {
+  '0': string;
+  '1': string;
+}
+
+const ID_LIST_MAP: IdList = {
+  '0': 'Active',
+  '1': 'Inactive'
+};
+
 const ProductsPage = () => {
   /*
     TODO:
