@@ -42,7 +42,7 @@ const ProductsPage = () => {
 
   const updateProduct = async (product: Product) => {
     setLoadingState(DATA_STATES.waiting);
-    const newProductStatus = product.ProductStatus === 'Active' ? 'Inactive' : 'Active';
+    const newProductStatus = product.ProductStatus === 'Active' ? 'InActive' : 'Active';
     const productStatusUpdated = await updateProductStatus(product, newProductStatus);
     if (productStatusUpdated) {
       const columnKey = product.ProductStatus as keyof ProductData;
@@ -75,6 +75,7 @@ const ProductsPage = () => {
         const sourceClone = Array.from(data[sourceKey]);
         const destClone = Array.from(data[destKey]);
         const [removed] = sourceClone.splice(sourceIndex, 1);
+        updateProduct(removed);
         destClone.splice(destIndex, 0, removed);
         destClone[destIndex].ProductStatus = destKey;
         setData({

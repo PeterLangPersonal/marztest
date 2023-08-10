@@ -78,7 +78,7 @@ const updateProductStatus = async (product: Product, newProductStatus: string) =
   const updatedProduct = { ...product, ProductStatus: newProductStatus };
   let productStatusUpdated = false;
   try {
-    const response = await axios.post(`${UPDATE_STATUS_URL}/${product.ProductID}/status`, updatedProduct);
+    const response = await axios.post(`${UPDATE_PRODUCT_URL}/${product.ProductID}/status`, updatedProduct);
     if (response?.status === 200) productStatusUpdated = true;
     else {
       const { message } = response.data;

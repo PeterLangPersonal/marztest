@@ -32,7 +32,7 @@ ProductData.init({
     },
     ProductStatus: {
         type: DataTypes.ENUM,
-        values: ['Active', 'Inactive'],
+        values: ['Active', 'InActive'],
         allowNull: false,
     },
 }, {
