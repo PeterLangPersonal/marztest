@@ -39,6 +39,14 @@ To build the docker image for api.orders run the command bellow from the root of
 docker build -t api.orders:latest .
 ```
 
+### api.products
+
+To build the docker image for api.products run the command bellow from the root of the `api.products` directory
+
+```Bash
+docker build -t api.products:latest .
+```
+
 ### Starting the application
 
 To start application run the following command from the root directory
@@ -97,9 +105,13 @@ You must develop the Products page for this application and create a PUBLIC gith
 
 You must develop a component to display the product name, product id and the product display image for each image. You can develop this component any way you wish (NOTE the current style system uses tailwind it is STRONGLY advised you use this style system). Then you will use this component to display all the products found in the database that are active. You will implemente this page at `webapp/src/pages/ProductsPage/ProductsPage.tsx`.
 
+Because of how the system was designed with pretty strict typing, I decided against trying to make the components reusable as some of the functionality is specialized for orders such as displaying the id for customers and products. If I were to have generalized components rather than make new ones, I could have designed it to pass in the child elements instead, then replaced OrderID, ProductID, etc with a nondescript ID property. Doing so would allow me to only reference the item's ID within components, making them highly reusable.
+
 ### Step 2: api.products
 
 You must develop a products micro-service containing an endpoint with the following prefix `/api/products/` that returns a json object with the content needed to display the products on the products page. This micro-service MUST run in its own container and the container must be added to the docker compose file, and you must include the instructution on how to setup the new micro-service in this file. You must also modify nginx to direct the traffic to your new endpoint, see `nginx.conf` for details. (You can implement this micro-service however you like, i.e. any language or framework of your choosing).
+
+Aside from buliding the image for the service, no additional work should be required.
 
 ### Step 3: mariadb
 
@@ -157,6 +169,8 @@ MariaDB [marz]> select * from Product;
 ```
 
 You must replace all of the product photo urls with real photo urls (you can use any photo url) and modify the data.sql script to use the new urls.
+
+I chose to modify the populate script to insert real urls instead since it was part of the requirements anyway. If this was data in a real environment, I could write over the existing database in many different ways, via raw SQL, or sequelize scripts to access and update the data which is what I'm more familiar with.
 
 ## Submission
 
