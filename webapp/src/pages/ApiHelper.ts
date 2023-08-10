@@ -90,4 +90,21 @@ const updateProductStatus = async (product: Product, newProductStatus: string) =
   return productStatusUpdated;
 };
 
-export { getInPipelineData, INPIPELINE_URL, updateOrderStatus, UPDATE_STATUS_URL, getProductData, GET_PRODUCT_URL, updateProductStatus, UPDATE_PRODUCT_URL };
+const DELETE_PRODUCT_URL = '/api/products';
+
+const deleteProduct = async (product: Product) => {
+  let productStatusDeleted = false;
+  try {
+    const response = await axios.delete(`${UPDATE_STATUS_URL}/${product.ProductID}`);
+    if (response?.status === 200) productStatusDeleted = true;
+    else {
+      const { message } = response.data;
+      throw message;
+    }
+  } catch(err) {
+    console.error(err);
+  }
+  return productStatusDeleted;
+}
+
+export { getInPipelineData, INPIPELINE_URL, updateOrderStatus, UPDATE_STATUS_URL, getProductData, GET_PRODUCT_URL, updateProductStatus, UPDATE_PRODUCT_URL, deleteProduct, DELETE_PRODUCT_URL };
