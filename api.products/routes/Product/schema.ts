@@ -1,7 +1,11 @@
 import { z } from 'zod';
 
 export const productSchema = z.object({
-    dateCreated: z.string(),
-    webVisitors: z.number(),
-    prClippings: z.number(),
+    ProductName: z.string(),
+    ProductPhotoUrl: z.string(),
+    ProductStatus: z.enum(["Active", "Inactive"]),
+});
+
+export const updateProductStatusSchema = z.object({
+    ProductStatus: z.enum(["Active", "Inactive"]),
 });
