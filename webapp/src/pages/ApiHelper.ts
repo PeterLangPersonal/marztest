@@ -76,18 +76,18 @@ const UPDATE_PRODUCT_URL = '/api/products';
 
 const updateProductStatus = async (product: Product, newProductStatus: string) => {
   const updatedProduct = { ...product, ProductStatus: newProductStatus };
-  let productStatusUpdated = false;
+  let errorOccured = false;
   try {
     const response = await axios.post(`${UPDATE_PRODUCT_URL}/${product.ProductID}/status`, updatedProduct);
-    if (response?.status === 200) productStatusUpdated = true;
-    else {
+    if (response?.status !== 200) {
       const { message } = response.data;
       throw message;
     }
   } catch(err) {
     console.error(err);
+    errorOccured = true;
   }
-  return productStatusUpdated;
+  return errorOccured;
 };
 
 

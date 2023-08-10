@@ -42,18 +42,8 @@ const ProductsPage = () => {
 
   const updateProduct = async (product: Product) => {
     setLoadingState(DATA_STATES.waiting);
-    const newProductStatus = product.ProductStatus === 'Active' ? 'InActive' : 'Active';
-    const productStatusUpdated = await updateProductStatus(product, newProductStatus);
-    if (productStatusUpdated) {
-      const columnKey = product.ProductStatus as keyof ProductData;
-      setData({
-        ...data,
-        [columnKey]: data[columnKey].filter(
-          (otherProduct: Product) => otherProduct.ProductID !== product.ProductID
-        ),
-      });
-    }
-    setLoadingState(DATA_STATES.loaded);
+    const errorOccured = await updateProductStatus(product, product.ProductStatus);
+    setLoadingState(errorOccured ? DATA_STATES.error : DATA_STATES.loaded);
   };
 
   const handleDragEnd = (result: any) => {
@@ -75,7 +65,6 @@ const ProductsPage = () => {
         const sourceClone = Array.from(data[sourceKey]);
         const destClone = Array.from(data[destKey]);
         const [removed] = sourceClone.splice(sourceIndex, 1);
-        updateProduct(removed);
         destClone.splice(destIndex, 0, removed);
         destClone[destIndex].ProductStatus = destKey;
         setData({
@@ -83,6 +72,7 @@ const ProductsPage = () => {
           [sourceKey]: sourceClone,
           [destKey]: destClone,
         });
+        updateProduct(removed);
     }
   };
 
