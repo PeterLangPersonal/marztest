@@ -12,5 +12,6 @@ export const sequelize = new Sequelize('marz', MYSQL_USER as string, MYSQL_PASSW
     dialect: 'mariadb',
     define: {
         freezeTableName: true,
+        timestamps: false,
     },
 });
