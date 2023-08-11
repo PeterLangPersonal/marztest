@@ -41,9 +41,10 @@ docker build -t api.orders:latest .
 
 ### api.products
 
-To build the docker image for api.products run the command bellow from the root of the `api.products` directory
+To build the docker image for api.products run the command bellow from the root of the `api.products` directory, also install the node dependencies 
 
 ```Bash
+npm ci
 docker build -t api.products:latest .
 ```
 
@@ -111,7 +112,7 @@ Because of how the system was designed with pretty strict typing, I decided agai
 
 You must develop a products micro-service containing an endpoint with the following prefix `/api/products/` that returns a json object with the content needed to display the products on the products page. This micro-service MUST run in its own container and the container must be added to the docker compose file, and you must include the instructution on how to setup the new micro-service in this file. You must also modify nginx to direct the traffic to your new endpoint, see `nginx.conf` for details. (You can implement this micro-service however you like, i.e. any language or framework of your choosing).
 
-Aside from buliding the image for the service, no additional work should be required.
+I used express and node.js to build the microservice, using sequelize to access the db instance
 
 ### Step 3: mariadb
 
